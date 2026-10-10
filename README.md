@@ -11,7 +11,8 @@ A Manifest V3 Chrome extension.
 | Path | What |
 |---|---|
 | `easyprompting/` | The unpacked extension (load this folder via `chrome://extensions` → *Load unpacked*) |
-| `easyprompting/LEGAL/PRIVACY.md` | Privacy policy |
+| `LEGAL/PRIVACY.md` | Privacy policy |
+| `LEGAL/cws_permissions_justification.txt` | Permission justifications for the Chrome Web Store |
 | `easyprompting-1.1.zip` | Packaged build, ready for the Chrome Web Store (extension folder only) |
 | `promo/` | Store promo assets + `make_promo.py` generator |
 | `STORE_LISTING.md` | Chrome Web Store listing copy |
@@ -33,7 +34,7 @@ A Manifest V3 Chrome extension.
 ## Privacy
 
 Everything is stored on your device via `chrome.storage`. See
-[`easyprompting/LEGAL/PRIVACY.md`](easyprompting/LEGAL/PRIVACY.md).
+[`LEGAL/PRIVACY.md`](LEGAL/PRIVACY.md).
 
 ## Related
 
@@ -42,4 +43,4 @@ companion extension **Very Practical Clock & Notepad**.
 
 ## License
 
-MIT — see [`easyprompting/LEGAL/LICENSE`](easyprompting/LEGAL/LICENSE).
+MIT — see [`LEGAL/LICENSE`](LEGAL/LICENSE).

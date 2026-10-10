@@ -1,10 +1,13 @@
 Justification for the permissions required by the "Easy Prompting" extension:
 
 **1. `windows`**
-   - Justification: Used to open the prompt scratchpad in its own small window and to close it again when the toolbar icon is clicked a second time. A dedicated window (rather than a toolbar popup) lets the pad stay open next to the user's AI chat while they type and copy, which is the core purpose of the extension.
+   - Justification: Used to manage the prompt scratchpad window itself: open it as a floating window (the secondary shape), focus an existing pad, move it back into a browser tab (the default shape) and close it again. The default shape needs no special permission — it is a plain browser tab. A dedicated window lets the pad stay open next to the user's AI chat while they type and copy, which is the core purpose of the extension. No page content is ever read through this permission.
 
 **2. `storage`**
    - Justification: Used to save the user's prompt drafts and preferences (such as text size) locally on their own device, so drafts are preserved across browser sessions and a stray keystroke can never lose them. No data is transmitted anywhere.
 
 **3. `system.display`**
-   - Justification: Used to read the screen dimensions so the pad window opens in a predictable position (bottom-right by default). This is the only use of this permission.
+   - Justification: Used once, at window creation, to read the screen dimensions so the floating pad window opens in a predictable position (bottom-right by default). If the information is unavailable, the browser's own placement is used instead. This is the only use of this permission.
+
+**4. `contextMenus`**
+   - Justification: Used for a right-click menu on Easy Prompting's own toolbar icon only — created with `contexts: ["action"]`, so it never appears on web pages, tabs or selections. The menu offers three actions on the user's own pad: "Open as a browser tab", "Open in a floating window" and "Close Easy Prompting"; it only switches the same pad between its two shapes or closes it. No page content is read or inspected, and nothing is transmitted.
