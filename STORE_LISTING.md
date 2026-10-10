@@ -7,7 +7,8 @@ Think of it as a prompt keeper / safe prompt notepad that sits next to ChatGPT, 
 ✍️ A SAFE PLACE TO WRITE
 • Enter never sends — nothing leaves this window, so no keystroke can fire your draft early.
 • Autosave — every keystroke is stored locally; close the window and your prompt is still there when you come back.
-• Stays open — a real window beside your chat, not a popup that vanishes the moment you click away.
+• Opens as a normal browser tab (default) or as a slim floating window beside your chat — switch with one button, your text stays put.
+• Stays open — a real tab or window beside your chat, not a popup that vanishes the moment you click away.
 
 🗂️ JUGGLE SEVERAL PROMPTS
 • Multiple tabs — keep a system prompt, a working draft and reusable snippets side by side.

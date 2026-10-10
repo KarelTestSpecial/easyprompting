@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Easy Prompting",
-  "version": "1.0",
-  "description": "A safe scratchpad for AI chat prompts. Draft in an open window, never lose a prompt to a stray Enter or Ctrl+C, then copy it.",
+  "version": "1.1",
+  "description": "A safe scratchpad for AI chat prompts. Draft in a browser tab or a floating window, never lose a prompt to a stray Enter or Ctrl+C, then copy it.",
   "icons": {
     "16": "icon/ep_icon16x16.png",
     "48": "icon/ep_icon48x48.png",
@@ -11,7 +11,8 @@
   "permissions": [
     "windows",
     "storage",
-    "system.display"
+    "system.display",
+    "contextMenus"
   ],
   "background": {
     "service_worker": "background.js"

@@ -93,6 +93,16 @@ body {
     line-height: 1;
 }
 
+#mode-btn {
+    flex: 0 0 auto;
+    padding: 5px 9px;
+    font-size: 12px;
+    line-height: 1.2;
+    color: var(--muted);
+    white-space: nowrap;
+}
+#mode-btn:hover { color: var(--text); }
+
 /* --- Pad --- */
 #pad-area {
     flex: 1 1 auto;

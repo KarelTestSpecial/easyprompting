@@ -12,12 +12,17 @@ A Manifest V3 Chrome extension.
 |---|---|
 | `easyprompting/` | The unpacked extension (load this folder via `chrome://extensions` → *Load unpacked*) |
 | `easyprompting/LEGAL/PRIVACY.md` | Privacy policy |
-| `easyprompting-1.0.zip` | Packaged build, ready for the Chrome Web Store |
+| `easyprompting-1.1.zip` | Packaged build, ready for the Chrome Web Store (extension folder only) |
 | `promo/` | Store promo assets + `make_promo.py` generator |
 | `STORE_LISTING.md` | Chrome Web Store listing copy |
 
 ## Features
 
+- **Two shapes, one pad** — opens as a **browser tab by default** (drag it into
+  any window, keep it beside your AI chat) or as a slim **floating window**
+  without toolbars. Switch anytime with the `Float` / `Tab` button in the top
+  bar, or right-click the toolbar icon. Only one copy ever runs: switching
+  moves the same pad instead of duplicating it.
 - **Enter never sends** — a calm window where nothing is transmitted.
 - **Autosave** — every keystroke is stored locally.
 - **Multiple tabs** — keep a system prompt, a draft and snippets side by side.

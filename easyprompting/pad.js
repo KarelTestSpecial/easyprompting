@@ -15,8 +15,53 @@ let activeNoteId = null;
 // --- DOM refs ---
 let padArea, tabsList, addTabBtn, copyBtn, clearBtn, counterEl;
 let fontSmaller, fontBigger, helpBtn, statusEl;
-let helpModal, helpClose;
+let helpModal, helpClose, modeBtn;
+let isFloating = false;
 let statusTimeout = null;
+
+// --- Where do I live? -------------------------------------------------------
+// The background service worker asks this to find the pad without needing the
+// "tabs" permission: the pad knows its own tab and window.
+async function describeSelf() {
+    try {
+        const tab = await chrome.tabs.getCurrent();
+        const win = await chrome.windows.getCurrent();
+        return {
+            tabId: tab ? tab.id : null,
+            windowId: win ? win.id : null,
+            windowType: win ? win.type : null
+        };
+    } catch (e) {
+        return null;
+    }
+}
+
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+    if (!msg || msg.type !== "ep-where-are-you") return;
+    describeSelf().then(sendResponse);
+    return true;
+});
+
+async function refreshModeButton() {
+    const self = await describeSelf();
+    isFloating = !!(self && self.windowType === "popup");
+    modeBtn.textContent = isFloating ? "Tab" : "Float";
+    modeBtn.title = isFloating
+        ? "Move this pad into a browser tab"
+        : "Open this pad in a floating window without toolbars";
+}
+
+async function switchMode() {
+    const mode = isFloating ? "tab" : "popup";
+    showStatus(isFloating ? "Moving to a tab…" : "Opening floating window…");
+    try {
+        await chrome.runtime.sendMessage({ type: "ep-switch", mode });
+    } catch (e) {
+        showStatus("Could not switch.");
+        return;
+    }
+    await refreshModeButton();
+}
 
 // Removed t() function
 document.addEventListener('DOMContentLoaded', init);
@@ -29,6 +74,7 @@ async function init() {
     applyFontSize();
     updateCounter();
     wireEvents();
+    refreshModeButton();
     padArea.focus();
 }
 
@@ -45,6 +91,7 @@ function cacheDom() {
     statusEl = document.getElementById('status-message');
     helpModal = document.getElementById('help-modal');
     helpClose = document.getElementById('help-close');
+    modeBtn = document.getElementById('mode-btn');
 }
 
 // localizeStatic removed
@@ -256,6 +303,7 @@ function wireEvents() {
     clearBtn.addEventListener('click', clearCurrent);
     fontSmaller.addEventListener('click', () => changeFont(-0.1));
     fontBigger.addEventListener('click', () => changeFont(0.1));
+    modeBtn.addEventListener('click', switchMode);
     helpBtn.addEventListener('click', () => helpModal.classList.remove('hidden'));
     helpClose.addEventListener('click', () => helpModal.classList.add('hidden'));
     helpModal.addEventListener('click', (e) => {
