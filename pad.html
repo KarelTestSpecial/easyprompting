@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Easy Prompting</title>
+    <link rel="stylesheet" href="pad.css">
+</head>
+<body>
+    <div id="tabs-bar">
+        <div id="tabs-list"></div>
+        <button id="add-tab-btn" title="New prompt tab">+</button>
+        <button id="mode-btn" title="Switch between a browser tab and a floating window">Float</button>
+    </div>
+
+    <textarea id="pad-area" spellcheck="true" autofocus placeholder="Write your prompt here. It saves automatically — nothing is ever sent from this window."></textarea>
+
+    <div id="toolbar">
+        <button id="copy-btn" class="primary" title="Copy this prompt to the clipboard">Copy</button>
+        <button id="clear-btn" title="Clear this tab">Clear</button>
+        <button id="undo-btn" title="Undo deleted tab or clear (Alt+Z)" disabled>Undo</button>
+        <div id="counter"></div>
+        <div class="spacer"></div>
+        <button id="font-smaller" title="Smaller text">A-</button>
+        <button id="font-bigger" title="Bigger text">A+</button>
+        <button id="help-btn" title="Keyboard shortcuts">?</button>
+    </div>
+
+    <div id="status-message">
+        <span id="status-text"></span>
+        <button id="status-undo-btn" class="status-action-btn hidden" type="button">Undo</button>
+    </div>
+
+    <div id="help-modal" class="hidden">
+        <div class="help-card">
+            <h2 id="help-title">Keyboard shortcuts</h2>
+            <ul id="help-list">
+                <li><span class="key">Alt + E / R</span><span class="desc" id="hd-er">Previous / next tab</span></li>
+                <li><span class="key">Alt + 1…9</span><span class="desc" id="hd-19">Jump to tab 1-9</span></li>
+                <li><span class="key">Alt + ← / →</span><span class="desc" id="hd-arrows">Previous / next tab (alternative)</span></li>
+                <li><span class="key">Alt + Z</span><span class="desc" id="hd-undo">Undo deleted tab / clear</span></li>
+            </ul>
+            <p id="help-tip" class="tip">Shortcuts work while typing. Enter just makes a new line here — nothing is ever sent.</p>
+            <p id="rename-hint" class="tip subtle">Double-click a tab to rename it</p>
+            <p id="mode-hint" class="tip subtle">The <span class="key">Float</span> / <span class="key">Tab</span> button in the top bar switches between a browser tab and a floating window. Right-click the toolbar icon for more options.</p>
+            <p id="sibling-note" class="tip subtle">Need a clock, alarms and richer notes too? Try our "Very Practical Clock & Notepad" extension.</p>
+            <button id="help-close">OK</button>
+        </div>
+    </div>
+
+    <script src="pad.js"></script>
+</body>
+</html>
